@@ -39,7 +39,7 @@ public class FileUploadController {
         return mv;
     }
 
-    @PostMapping("/uploadFormAction")
+    @PostMapping("/uploadFormActions")
 	public void uploadFormPost(MultipartHttpServletRequest request, Model model) {
         System.out.println("request : ");
         System.out.println(request);
