@@ -152,7 +152,7 @@
                 .catch((error) => {
                     console.error(error);
                 });
-                    }
+                   }
             },
             handleScroll() {
                 const scrollHeight = document.documentElement.scrollHeight;

@@ -30,7 +30,7 @@
                             placeholder="비밀번호"
                         />
                     </div>
-                    <div id="idRememberSection">
+                    <!-- <div id="idRememberSection">
                         <input
                             class="form-check-input"
                             type="checkbox"
@@ -39,7 +39,7 @@
                         <span style="cursor: pointer" @click="toggleCheckbox"
                             >아이디 저장</span
                         >
-                    </div>
+                    </div> -->
                     <div>
                         <button id="loginSubmitBtn" type="submit">로그인</button>
                     </div>

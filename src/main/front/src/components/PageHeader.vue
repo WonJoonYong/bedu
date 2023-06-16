@@ -57,11 +57,17 @@
                 <b-nav-item class="fs-5">
                     <router-link v-if="!isLoggedIn" to="/login">로그인</router-link>
                 </b-nav-item>
-                <b-nav-item class="fs-5" v-if="isLoggedIn">
-                    <a class="dropdown-toggle no-arrow m-0" type="button" id="dropdownMenuButton1" :aria-expanded="isDropdownOpen">
-                        {{ getNickname }}
-                    </a>
-                </b-nav-item>
+                <b-dropdown v-if="isLoggedIn" class="fs-5">
+                    <template #button-content>
+                        <span class="no-arrow">{{ getNickname }}</span>
+                    </template>
+                    <b-dropdown-item>
+                        <router-link to="/mypage">마이페이지</router-link>
+                    </b-dropdown-item>
+                    <b-dropdown-item>
+                        <router-link to="/csc">고객센터</router-link>
+                    </b-dropdown-item>
+                </b-dropdown>
                 <b-nav-item class="fs-5">
                     <button v-if="isLoggedIn" @click="logout">로그아웃</button>
                 </b-nav-item>

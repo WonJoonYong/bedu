@@ -5,16 +5,16 @@
             <div class="py-5">
                 <p class="text-center fs-4 fw-bold">강의를 조회하세요</p>
                 <b-form class="d-flex" @submit="getLectureList">
-                    <div class="d-flex m-auto">
-                        <div class="me-4">
+                    <div class="d-flex m-auto w-75">
+                        <div class="me-4 w-75">
                             <b-form-input 
                             v-model="keyword" 
-                            class="w-100 m-auto form-control-lg py-3" 
+                            class="w-100 m-auto form-control-lg py-1" 
                             type="search"
                             ></b-form-input>
                         </div>
-                        <div class="">
-                            <b-button class="fs-5 px-5  py-3 bedu-submit-button-lg w-100" type="submit">검색</b-button>
+                        <div class="w-25">
+                            <b-button class="fs-5 px-5  py-2 bedu-submit-button-lg w-100" type="submit">검색</b-button>
                         </div>
                     </div>
                 </b-form>
@@ -145,7 +145,7 @@ export default{
         },
         /** 파일 변경, 업로드시 데이터 바인딩을 위한 메서드 */
         fileChange(e){
-            this.videoFile = e.target.files;
+            this.videoFile = e.target.files[0];
         },
         uploadVideo(){
             if(this.form.lectNum == 0){
@@ -178,11 +178,22 @@ export default{
             formData.append("videoTime",this.form.videoTime);
             formData.append("videoFile",this.videoFile);
 
-            console.log(this.videoFile)
-            console.log(formData)
-            this.$axiosSend('post','/api/file/uploadFormAction',{
-                request : formData,
-            })
+            console.log(formData);
+            const headers = {
+                'Content-Type': 'multipart/form-data',
+                processData: false,
+                contentType: false,
+            }
+
+            const params = {
+                request : formData
+            }
+
+            // var request = new XMLHttpRequest();
+            // request.open("POST", "http://localhost:8080/test");
+            // request.send(formData);
+
+            this.$axiosSend('post','/api/file/uploadFormAction',formData, headers)
             .then((res)=>{
                 console.log(res)
             })
